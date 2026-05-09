@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Akun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            display: none; 
+        }
+
+        h2 { margin-bottom: 10px; color: #333; }
+        p { font-size: 14px; color: #666; margin-bottom: 20px; }
+
+        .input-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-size: 13px; margin-bottom: 5px; color: #555; }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745; /* Hijau untuk Daftar */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-blue { background-color: #007bff; } /* Biru untuk Login */
+        button:hover { opacity: 0.9; }
+
+        .links { margin-top: 15px; font-size: 13px; color: #777; }
+        .links a { color: #007bff; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <!-- BOX LOGIN -->
+    <div id="login-box" class="container" style="display: block;">
+        <h2>Login</h2>
+        <p>Masuk ke akun Anda</p>
+        <form onsubmit="event.preventDefault(); alert('Proses Login...');">
+            <div class="input-group">
+                <label>Email / Username</label>
+                <input type="text" placeholder= >
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder= >
+            </div>
+            <button type="submit" class="btn-blue">Masuk</button>
+        </form>
+        <div class="links">
+            <a href="#" onclick="tampilkan('reset-box')">Lupa Password?</a><br><br>
+            Belum punya akun? <a href="#" onclick="tampilkan('daftar-box')">Daftar</a>
+        </div>
+    </div>
+
+    <!-- BOX DAFTAR AKUN -->
+    <div id="daftar-box" class="container">
+        <h2>Daftar Akun</h2>
+        <p>Lengkapi data untuk bergabung</p>
+        <form onsubmit="event.preventDefault(); alert('Akun Berhasil Dibuat!'); tampilkan('login-box');">
+            <div class="input-group">
+                <label>Nama Lengkap</label>
+                <input type="text" placeholder="Nama Anda" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="email@contoh.com" required>
+            </div>
+            <div class="input-group">
+                <label>Password Baru</label>
+                <input type="password" placeholder="Buat password" required>
+            </div>
+            <button type="submit">Buat Akun Sekarang</button>
+        </form>
+        <div class="links">
+            Sudah punya akun? <a href="#" onclick="tampilkan('login-box')">Login</a>
+        </div>
+    </div>
+
+    <!-- BOX RESET PASSWORD -->
+    <div id="reset-box" class="container">
+        <h2>Reset Password</h2>
+        <p>Buat password baru secara instan</p>
+        <form onsubmit="event.preventDefault(); alert('Password diperbarui!'); tampilkan('login-box');">
+            <div class="input-group">
+                <label>Password Baru</label>
+                <input type="password" placeholder="Password baru" required>
+            </div>
+            <div class="input-group">
+                <label>Konfirmasi Password</label>
+                <input type="password" placeholder="Ulangi password" required>
+            </div>
+            <button type="submit" class="btn-blue">Ganti Password</button>
+        </form>
+        <div class="links">
+            <a href="#" onclick="tampilkan('login-box')">Kembali ke Login</a>
+        </div>
+    </div>
+
+    <script>
+        function tampilkan(idBox) {
+            // Sembunyikan semua box dulu
+            document.querySelectorAll('.container').forEach(box => {
+                box.style.display = 'none';
+            });
+            // Tampilkan yang dipilih
+            document.getElementById(idBox).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
